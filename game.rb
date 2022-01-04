@@ -15,41 +15,36 @@ class Game
       puts "welocme to the math game!"
     end
 
-    
+    def new_turn
+      puts "P1: #{@player_1.display_lives} vs P2: #{@player_2.display_lives}"
+      puts "---- NEW TURN ----"
+    @curent_player == @player_1 ? @curent_player = @player_2 : @curent_player = @player_1 
+    question()
+    end
 
     def question
       problem = Problem.new
       response = problem.create_problem(@curent_player.name)
-      puts "#{@curent_player.name}: #{response ? 'YES! You are correct!'  : 'No! You are worng'}"
+
+      if (response) 
+        puts "#{@curent_player.name}: YES! You are correct!"
+        return new_turn()
+      end
+         puts "No! You are wrong!"
+         current_life = @curent_player.life_deductor
+         if current_life > 0
+          return new_turn() 
+         end
+         return game_over()
     end
+    
 
-    def game_over (name, score)
-      puts "#{name} wins with a score of #{score}/n---- GAME OVER ----/n Good Bye!"
+    def game_over
+      @curent_player == @player_1 ? winner = @player_2 : winner = @player_1
+      puts " #{winner.name} wins with a score of #{winner.display_lives}"
+      puts "---- GAME OVER ----"
+      puts "Good Bye!"
     end
-
-
-
-
-
-  
-
-
-
-
-
-  #   @player_1 = Player.new('Player 1')
-  #   @player_2 = Player.new('player_2')
-  #   @problem = Problem.new
-  #   curent_problem = @problem
-  #   curent_player = @player_1
-  #   puts "#{curent_player.name}: #{curent_problem.validate}"
-  # if curent_problem.validate == true
-  #    do puts "#{curent_player.name}: YES! You are correct." end
-  # end
-  # else
-  #   puts "#{curent_player.name}: Seriously? No! "
-  # end
-  #   curent_player.life_deductor
 
 end
 

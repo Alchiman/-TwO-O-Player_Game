@@ -8,5 +8,3 @@ game = Game.new
 
 game.greeting
 game.question
-
-

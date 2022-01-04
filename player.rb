@@ -4,6 +4,7 @@ class Player
     @lives = 3
     @name = name
   end
+  
   def life_deductor
     @lives -= 1
   end 

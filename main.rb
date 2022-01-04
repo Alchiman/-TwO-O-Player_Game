@@ -1,13 +1,12 @@
-require 'player'
-
-
-class Turn(turn)
-  def initialize (player)
-  @current_turn = player
-  end
-end 
+require './game.rb'
+require './player.rb'
+require './problem'
 
 
 
+game = Game.new
+
+game.greeting
+game.question
 
 

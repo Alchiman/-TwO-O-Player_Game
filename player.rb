@@ -1,6 +1,5 @@
 class Player 
-  attr_reader :name
-  attr_reader :lives
+  attr_reader :name, :lives
   def initialize (name)
     @lives = 3
     @name = name
@@ -8,5 +7,9 @@ class Player
   def life_deductor
     @lives -= 1
   end 
+
+  def display_lives
+    "#{@lives}/3"
+  end
 end
 
